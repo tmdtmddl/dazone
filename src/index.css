@@ -32,6 +32,15 @@
   .input {
     @apply px-1.5 dark:bg-gray-800 dark:text-gray-300;
   }
+  .div {
+    @apply flex gap-2.5;
+  }
+  .div.col {
+    @apply flex-col;
+  }
+  .label {
+    @apply text-gray-500 text-xs;
+  }
 }
 
 @layer utilities {
