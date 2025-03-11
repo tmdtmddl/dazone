@@ -1,4 +1,55 @@
-:root {
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  h1 {
+    /* @apply text-red-500 text-6xl; */
+  }
+
+  button,
+  a {
+    @apply p-1 px-2.5 bg-gray-50 rounded dark:bg-gray-800 dark:text-gray-200;
+  }
+
+  input,
+  select {
+    @apply border border-gray-200 rounded h-10 bg-bg px-0;
+  }
+
+  body {
+    @apply dark:bg-gray-900 dark:text-gray-200
+    bg-gray-50 sm:bg-amber-50 md:bg-cyan-50 lg:bg-pink-50
+      dark:sm:bg-pink-50 dark:md:bg-amber-50 dark:lg:bg-cyan-50;
+  }
+}
+
+@theme {
+  --color-theme: var(--color-red-500);
+  --color-bg: var(--color-gray-50);
+}
+
+@layer components {
+  .input {
+    @apply px-1.5 dark:bg-gray-800 dark:text-gray-300;
+  }
+  .div {
+    @apply flex gap-2.5;
+  }
+  .div.col {
+    @apply flex-col;
+  }
+  .label {
+    @apply text-gray-500 text-xs;
+  }
+}
+
+@layer utilities {
+  .input-my {
+    @apply px-2.5;
+  }
+}
+
+/* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -65,4 +116,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */
