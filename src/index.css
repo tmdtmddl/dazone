@@ -1,10 +1,5 @@
 @import "tailwindcss";
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@custom-variant dark (&:where(.dark,.dark*));
+@custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
   h1 {
@@ -18,11 +13,13 @@
 
   input,
   select {
-    @apply border border-gray-200 founded h-10 bg-bg px-0;
+    @apply border border-gray-200 rounded h-10 bg-bg px-0;
   }
+
   body {
     @apply dark:bg-gray-900 dark:text-gray-200
-    bg-gray-50 sm:bg-amber-50;
+    bg-gray-50 sm:bg-amber-50 md:bg-cyan-50 lg:bg-pink-50
+      dark:sm:bg-pink-50 dark:md:bg-amber-50 dark:lg:bg-cyan-50;
   }
 }
 
@@ -33,9 +30,10 @@
 
 @layer components {
   .input {
-    @apply px-1.5;
+    @apply px-1.5 dark:bg-gray-800 dark:text-gray-300;
   }
 }
+
 @layer utilities {
   .input-my {
     @apply px-2.5;
