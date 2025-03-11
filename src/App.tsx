@@ -1,17 +1,20 @@
-import React from "react";
-import Item from "./Item";
+import { useState } from "react";
+import { TextInput } from "./ui";
 
-const App = () => {
-  const data = "Hello Word";
-
+function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
   return (
     <div>
-      <h1>App</h1>
-      <Item data={data} />
-      <Item data={123123} />
-      <Item data="함수 확인" fn={() => console.log(data)} />
+      <div>App</div>
+      <TextInput.Input className="px-5" />
+      <select name="" id="">
+        <option value="">hello</option>
+      </select>
+      <button onClick={() => document.body.classList.toggle("dark")}>
+        {isDarkMode ? "Darkmode" : "light mode"}
+      </button>
     </div>
   );
-};
+}
 
 export default App;

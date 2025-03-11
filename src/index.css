@@ -1,4 +1,48 @@
-:root {
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@custom-variant dark (&:where(.dark,.dark*));
+
+@layer base {
+  h1 {
+    /* @apply text-red-500 text-6xl; */
+  }
+
+  button,
+  a {
+    @apply p-1 px-2.5 bg-gray-50 rounded dark:bg-gray-800 dark:text-gray-200;
+  }
+
+  input,
+  select {
+    @apply border border-gray-200 founded h-10 bg-bg px-0;
+  }
+  body {
+    @apply dark:bg-gray-900 dark:text-gray-200
+    bg-gray-50 sm:bg-amber-50;
+  }
+}
+
+@theme {
+  --color-theme: var(--color-red-500);
+  --color-bg: var(--color-gray-50);
+}
+
+@layer components {
+  .input {
+    @apply px-1.5;
+  }
+}
+@layer utilities {
+  .input-my {
+    @apply px-2.5;
+  }
+}
+
+/* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -65,4 +109,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */
