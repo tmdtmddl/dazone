@@ -1,54 +1,60 @@
 import { useRef, useCallback } from "react";
+
 import { InputWrapper, InputWrapperProps } from "./Container";
 
-interface UseSelectProps extends InputWrapperProps {
+export interface UseSelectProps extends InputWrapperProps {
   selectProps?: React.DetailedHTMLProps<
     React.SelectHTMLAttributes<HTMLSelectElement>,
     HTMLSelectElement
   >;
   value: string | number;
-  onSelect: (vale: string) => void;
+  onSelect: (value: string) => void;
   placeholder: string;
   options: string[];
-  className: string;
+  className?: string;
 }
+
 const useSelect = () => {
-  const ref = useRef<HTMLInputElement>(null);
-  const focus = useCallback(() => {
-    setTimeout(() => ref.current?.focus(), 100);
-  }, [ref]);
-  const show = useCallback(() => {
-    setTimeout(() => ref.current?.showPicker(), 100);
-  }, [ref]);
-  const hide = useCallback(() => {
-    setTimeout(() => ref.current?.blur(), 100);
-  }, [ref]);
+  const ref = useRef<HTMLSelectElement>(null);
+  const focus = useCallback(
+    () => setTimeout(() => ref.current?.focus(), 100),
+    [ref]
+  );
+  const show = useCallback(
+    () => setTimeout(() => ref.current?.showPicker(), 100),
+    [ref]
+  );
+  const hide = useCallback(
+    () => setTimeout(() => ref.current?.showPicker(), 100),
+    [ref]
+  );
+
   const Component = useCallback(
     ({
-      className,
       id,
       onSelect,
       options,
-      title,
       placeholder,
+      title,
       value,
+      className,
       message,
       selectProps,
-      children,
     }: UseSelectProps) => {
-      const WrapperPrpos = { id, title, message };
+      const wrapperProps = { id, title, message };
       return (
-        <InputWrapper {...WrapperPrpos}>
+        <InputWrapper {...wrapperProps}>
           <select
             {...selectProps}
-            {...WrapperPrpos}
+            {...wrapperProps}
+            ref={ref}
+            value={value}
             onChange={(e) => onSelect(e.target.value)}
             className={className}
-            value={value}
           >
             <option>{placeholder}</option>
             {options.map((o) => (
-              <option value={o} key={o}>
+              <option key={o} value={o}>
                 {o}
               </option>
             ))}
@@ -58,7 +64,8 @@ const useSelect = () => {
     },
     [ref]
   );
-  return { Component, show, focus, hide };
+
+  return { Component, ref, focus, show, hide };
 };
 
 export default useSelect;

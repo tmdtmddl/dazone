@@ -1,1 +1,1 @@
-export * as PROUCT from "./product.store";
+export * as PRODUCT from "./product.store";

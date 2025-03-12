@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-/* @import "./styles/components.css"; */
-
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
@@ -10,7 +8,7 @@
   --color-darkBg: var(--color-zinc-900);
   --color-warning: var(--color-red-500);
   --color-color: var(--color-zinc-900);
-  --color-darkColor: var(--color-zinc-400);
+  --color-darkColor: var(--color-zinc-300);
   --color-border: var(--color-gray-200);
   --color-darkBorder: var(--color-zinc-700);
 }
@@ -18,9 +16,16 @@
 @layer base {
   button,
   a {
-    @apply flex flex-col  h-12 rounded items-center justify-center px-2.5 cursor-pointer hover:opacity-80 hover:shadow-md active:opacity-50 font-light;
+    @apply flex flex-col h-10 rounded items-center justify-center px-2.5 cursor-pointer hover:opacity-80 hover:shadow-md active:opacity-50 font-light;
   }
+
   body {
     @apply bg-white dark:bg-darkBg dark:text-darkColor;
+  }
+}
+
+@layer components {
+  .flex-center {
+    @apply justify-center items-center;
   }
 }

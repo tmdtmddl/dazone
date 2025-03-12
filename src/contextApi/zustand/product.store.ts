@@ -16,7 +16,7 @@ export const store = create<Props>(() => ({
       name: "의자",
       price: "329800",
       quan: 45,
-      id: "1111",
+      id: "111",
     },
     {
       imgs: [
@@ -40,14 +40,14 @@ export const store = create<Props>(() => ({
       name: "무드등",
       price: "79800",
       quan: 23,
-      id: "3333",
+      id: "33333",
     },
     {
       imgs: [
-        "https://pixabay.com/ko/photos/%EC%BB%A4%ED%94%BC-%EC%BD%A9-%EC%B9%B4%ED%8E%98-7066308/",
-        "https://pixabay.com/ko/photos/%EC%BB%A4%ED%94%BC-%EC%BB%A4%ED%94%BC-%EC%BD%A9-%EB%B0%A9%ED%96%A5-%EA%B5%AC%EC%9A%B4-%EA%B2%83-4591159/",
-        "https://pixabay.com/ko/photos/%EC%BB%A4%ED%94%BC-%EC%BD%A9-%EC%BB%A4%ED%94%BC-%EB%B3%B6%EC%9D%80-%EC%BB%A4%ED%94%BC-%EC%BD%A9-6603499/",
-        "https://pixabay.com/ko/photos/%EC%BB%A4%ED%94%BC-%EC%BD%A9-%EC%B9%B4%ED%8E%98%EC%9D%B8-%EA%B5%AC%EC%9A%B4-%EA%B2%83-8406187/",
+        "https://cdn.pixabay.com/photo/2013/08/11/19/46/coffee-171653_1280.jpg",
+        "https://cdn.pixabay.com/photo/2022/04/11/16/29/coffee-beans-7126154_1280.jpg",
+        "https://cdn.pixabay.com/photo/2016/08/07/16/28/coffee-1576552_1280.jpg",
+        "https://cdn.pixabay.com/photo/2012/02/23/09/16/coffee-15994_1280.jpg",
       ],
       name: "커피",
       price: "3000",
@@ -57,7 +57,7 @@ export const store = create<Props>(() => ({
     {
       imgs: [
         "https://cdn.pixabay.com/photo/2021/09/11/10/42/camping-6615226_640.jpg",
-        "https://pixabay.com/ko/photos/%EB%9D%BC%EB%A9%B4-%EA%B5%AD%EC%88%98-%EC%A0%91%EC%8B%9C-%EC%9D%8C%EC%8B%9D-5579023/",
+        "https://cdn.pixabay.com/photo/2022/05/10/18/50/ramen-7187809_1280.jpg",
         "https://cdn.pixabay.com/photo/2021/11/18/11/43/noodles-6806153_640.jpg",
         "https://cdn.pixabay.com/photo/2016/02/20/09/04/food-1211752_640.jpg",
       ],
@@ -66,7 +66,6 @@ export const store = create<Props>(() => ({
       quan: 5,
       id: "5555",
     },
-
     {
       imgs: [
         "https://cdn.pixabay.com/photo/2016/03/27/19/31/fashion-1283863_640.jpg",
@@ -77,7 +76,7 @@ export const store = create<Props>(() => ({
       name: "의류",
       price: "20000",
       quan: 34,
-      id: "6666",
+      id: "asdfkasdfasdf78900",
     },
     {
       imgs: [
@@ -89,9 +88,8 @@ export const store = create<Props>(() => ({
       name: "목도리",
       price: "10000",
       quan: 64,
-      id: "7777",
+      id: "asdkfasdf0",
     },
-
     {
       imgs: [
         "https://cdn.pixabay.com/photo/2017/03/30/04/53/yellow-2187234_1280.jpg",
@@ -99,7 +97,7 @@ export const store = create<Props>(() => ({
       name: "연필1",
       price: "10000",
       quan: 1,
-      id: "8888",
+      id: "66666",
     },
     {
       imgs: [
@@ -108,7 +106,7 @@ export const store = create<Props>(() => ({
       name: "연필2",
       price: "20000",
       quan: 2,
-      id: "9999",
+      id: "asdfasdf0123",
     },
     {
       imgs: [
@@ -117,7 +115,7 @@ export const store = create<Props>(() => ({
       name: "연필3",
       price: "30000",
       quan: 3,
-      id: "10101010",
+      id: "77777",
     },
     {
       imgs: [
@@ -126,16 +124,16 @@ export const store = create<Props>(() => ({
       name: "연필4",
       price: "40000",
       quan: 4,
-      id: "11111111",
+      id: "8888",
     },
     {
       imgs: [
         "https://cdn.pixabay.com/photo/2023/07/19/04/56/european-shorthair-8136065_1280.jpg",
       ],
       name: "고양이",
-      price: "200,000",
+      price: "200000",
       quan: 72,
-      id: "12121212",
+      id: "9999",
     },
     {
       imgs: [
@@ -144,7 +142,7 @@ export const store = create<Props>(() => ({
       name: "호랑이",
       price: "9000000",
       quan: 3,
-      id: "13131313",
+      id: "123123124",
     },
     {
       imgs: [
@@ -153,7 +151,7 @@ export const store = create<Props>(() => ({
       name: "다람쥐",
       price: "500000",
       quan: 60,
-      id: "14141414",
+      id: "2351234912",
     },
     {
       imgs: [
@@ -162,7 +160,7 @@ export const store = create<Props>(() => ({
       name: "판다",
       price: "5000000",
       quan: 8,
-      id: "15151515",
+      id: "888889887900",
     },
   ],
 }));

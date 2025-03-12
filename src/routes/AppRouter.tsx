@@ -1,11 +1,8 @@
 import { Suspense, lazy } from "react";
-
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CgSpinner } from "react-icons/cg";
 
 const Home = lazy(() => import("./Home"));
-
 const Product = lazy(() => import("./Product"));
 const MyAccount = lazy(() => import("./MyAccount"));
 const Cart = lazy(() => import("./Cart"));
@@ -15,9 +12,9 @@ export default function AppRouter() {
   return (
     <Suspense
       fallback={
-        <div className="fixed w-full h-screen flex justify-center items-center flex-col gap-y-2.5 ">
+        <div className="fixed w-full h-screen flex flex-col gap-y-2.5 flex-center">
           <CgSpinner className="text-4xl animate-spin text-theme" />
-          <h1 className="animate-pluse">App is Loading...</h1>
+          <h1 className="animate-pulse">App is Loading...</h1>
         </div>
       }
     >

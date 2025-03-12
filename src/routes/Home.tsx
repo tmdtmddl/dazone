@@ -1,11 +1,10 @@
-import React from "react";
-import PROUCT from "../contextApi";
+import { PRODUCT } from "../contextApi";
 import ProductItem from "../shared/ProductItem";
 
 const Home = () => {
-  const { products } = PROUCT.store();
+  const { products } = PRODUCT.store();
   return (
-    <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-1 ">
+    <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-1">
       {products.map((product) => (
         <ProductItem key={product.id} {...product} />
       ))}
