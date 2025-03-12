@@ -1,14 +1,15 @@
-import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
 interface Props {
   menuHandler: () => void;
 }
+
 interface Menu {
   to: string;
   name: string;
 }
+
 const RootNavbar = ({ menuHandler }: Props) => {
   const menus: Menu[] = [
     { to: "/", name: "Home" },
@@ -20,14 +21,9 @@ const RootNavbar = ({ menuHandler }: Props) => {
   const location = useLocation();
 
   return (
-    <nav
-      className={twMerge(
-        "fixed top-15 right-0 border border-border border-l-0 w-full border-r-0  bg-white z-10 dark:border-b-darkBorder  dark:bg-border md:relative md:flex  md:w-auto md:top-0"
-      )}
-    >
+    <nav className="fixed bg-white top-15 right-0 w-full z-10 border border-border border-l-0 border-r-0 dark:bg-darkBg dark:border-darkBorder md:relative md:flex md:w-auto md:top-0">
       {menus.map(({ name, to }) => {
         const isCurrentPath = to === location.pathname;
-
         return (
           <Link
             to={to}
