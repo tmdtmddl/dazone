@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer components {
+  .flex-center {
+    @apply justify-center items-center;
+  }
+  .theme-base {
+    @apply bg-white dark:dg-darkBg dark:text-darkColor;
+  }
+}
