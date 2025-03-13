@@ -2,7 +2,7 @@ import React from "react";
 
 const ProductItem = ({ id, imgs, name, price, quan }: ProductProps) => {
   return (
-    <div>
+    <div className="mx-auto">
       <p>{name}</p>
       <img src={imgs[0]} alt={name} />
       <div>
