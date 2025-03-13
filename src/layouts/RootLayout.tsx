@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import RootNavbar from "./RootNavbar";
 import { IoMenu, IoSearchOutline, IoSunny, IoMoon } from "react-icons/io5";
+import logoImage from "../imgs/logo.png";
+import logoImage2 from "../imgs/logow.png";
 
 const RootLayout = () => {
   const [isMenuActive, setIsMenuActive] = useState(false);
@@ -13,9 +15,13 @@ const RootLayout = () => {
 
   return (
     <>
-      <header className="border-b border-b-border dark:bg-darkBg header dark:border-b-darkBorder">
-        <div className="flex gap-x-2.5 max-w-300 mx-auto p-2.5">
-          <img src="" alt="logo" className="h-10 w-25 bg-gray-50" />
+      <header className="border-b border-b-border dark:bg-darkBg header dark:border-b-darkBorder fixed top-0 left-0 right-0 bg-white">
+        <div className="flex gap-x-2.5 max-w-300 mx-auto p-2.5 ">
+          <img
+            src={!isDarkMode ? logoImage : logoImage2}
+            alt="logo"
+            className="h-10 w-25 "
+          />
           <form
             className="flex flex-1 gap-x-2.5"
             onSubmit={(e) => e.preventDefault()}

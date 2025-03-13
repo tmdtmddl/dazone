@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CgSpinner } from "react-icons/cg";
 
 const Home = lazy(() => import("./Home"));
-const Product = lazy(() => import("./Product"));
+// const Product = lazy(() => import("./Product"));
+const ProductMe = lazy(() => import("./ProductMe"));
 const MyAccount = lazy(() => import("./MyAccount"));
 const Cart = lazy(() => import("./Cart"));
 const RootLayout = lazy(() => import("../layouts/RootLayout"));
@@ -24,7 +25,8 @@ export default function AppRouter() {
             <Route index Component={Home} />
             <Route path="cart" Component={Cart} />
             <Route path="myAccount" Component={MyAccount} />
-            <Route path="product" Component={Product} />
+            {/* <Route path="product" Component={Product} /> */}
+            <Route path="product" Component={ProductMe} />
           </Route>
         </Routes>
       </BrowserRouter>
