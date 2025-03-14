@@ -33,9 +33,9 @@ const ProductMe = () => {
       <div className="flex flex-col gap-y-2">
         <div className="flex gap-x-2 relative">
           <div className="border h-60 min-w-80 max-w-80 box-border flex overflow-auto">
-            {imgs.map((i, index) => (
-              <img src={i} alt={name} key={index} />
-            ))}
+            {imgs.map((i, index) => {
+              return <img src={i} alt={name} key={index} />;
+            })}
           </div>
           <button className="p-0 h-5 " onClick={shareHandlner}>
             <FaShareFromSquare className="text-xl" />
@@ -49,7 +49,7 @@ const ProductMe = () => {
                     <p>이메일</p>
                   </button>
                   <button
-                    className="w-5 h-5 hover:border hover:border-sky-300"
+                    className="w-5 h-5 hover:border hover:border-sky-300 "
                     onClick={shareHandlner}
                   >
                     X
@@ -80,16 +80,18 @@ const ProductMe = () => {
           )}
         </div>
         <ul className="flex gap-x-1 max-w-80">
-          {imgs.map((im) => (
-            <li
-              key={im}
-              className="border rounded-xl w-20 h-20 overflow-hidden hover:border-blue-600 hover:shadow-xl hover:shadow-blue-200 "
-            >
-              <button className="px-0 w-20 h-20 ">
-                <img src={im} alt={name} className="w-20 h-20 object-cover" />
-              </button>
-            </li>
-          ))}
+          {imgs.map((im) => {
+            return (
+              <li
+                key={im}
+                className="border rounded-xl w-20 h-20 overflow-hidden hover:border-blue-600 hover:shadow-xl hover:shadow-blue-200 "
+              >
+                <button className="px-0 w-20 h-20 ">
+                  <img src={im} alt={name} className="w-20 h-20 object-cover" />
+                </button>
+              </li>
+            );
+          })}
         </ul>
       </div>
 
@@ -158,14 +160,16 @@ const ProductMe = () => {
           id="quans"
           className="border  border-gray-400 w-35 rounded bg-gray-50 hover:bg-gray-100 p-1"
         >
-          <option value="1" id="quans">
+          <option value="" id="quans">
             수량
           </option>
-          {quans.map((q) => (
-            <option value={q} key={q}>
-              {q}
-            </option>
-          ))}
+          {quans.map((q) => {
+            return (
+              <option value={q} key={q}>
+                {q}
+              </option>
+            );
+          })}
         </select>
         <button onClick={onClick} className={twMerge(btns, "bg-amber-300")}>
           Add to cart
