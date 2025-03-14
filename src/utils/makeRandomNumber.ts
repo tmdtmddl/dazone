@@ -8,7 +8,7 @@ const makeRandomNumber = (length: number): number => {
       min = "1";
     } else {
       min = min + "0";
-    } //여기서는 뭘 맵으로 뿌리는 거임?????
+    } //? 여기서는 뭘 맵으로 뿌리는 거임?????
   });
   const maxNumber = Number(max);
   const minNumber = Number(min);
@@ -21,6 +21,6 @@ const makeRandomNumber = (length: number): number => {
 
 export default makeRandomNumber;
 
-// Array.from ??
+//?  Array.from ??
 
-//인자받는 것들 차이? ({}:{}) 이거랑 ({}:) ,(:string)
+//? 인자받는 것들 차이? ({}:{}) 이거랑 ({}:) ,(:string)
