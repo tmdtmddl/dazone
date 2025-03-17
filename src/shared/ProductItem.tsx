@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
 import pricfy from "../utils/pricfy";
+import { CART } from "../contextApi";
+import { useCallback } from "react";
 
-const ProductItem = ({ id, imgs, name, price, quan, desc }: ProductProps) => {
+const ProductItem = (item: ProductProps) => {
+  const { id, imgs, name, price, quan, desc } = item;
+  const { addToCart } = CART.use();
+  const onAdd = useCallback(async () => {
+    await addToCart([item]);
+    alert("장바구니에 담겼습니다.");
+  }, [addToCart, item]);
   return (
     <div
       className="flex flex-col border rounded border-border"
@@ -25,7 +33,9 @@ const ProductItem = ({ id, imgs, name, price, quan, desc }: ProductProps) => {
 
         <p className="text-2xl">₩ {pricfy(price)}</p>
         <p className="text-sm text-gray-500">{quan} 개 남았습니다.</p>
-        <button className="btn text-sm mt-2">장바구니에 담기</button>
+        <button className="btn text-sm mt-2" onClick={onAdd}>
+          장바구니에 담기
+        </button>
       </div>
     </div>
   );
