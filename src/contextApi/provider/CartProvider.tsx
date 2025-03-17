@@ -69,7 +69,7 @@ const CartProvider = ({ children }: PropsWithChildren) => {
             return { success: true };
 
           default:
-            return { success: false, message: "함수 ㄴㄴ" };
+            return { success: false, message: "함수가 아닙니다." };
         }
       } catch (error: any) {
         return { message: error.message };
@@ -94,11 +94,21 @@ const CartProvider = ({ children }: PropsWithChildren) => {
     [mutation]
   );
 
-  const remoiveAnItem = useCallback(
+  const removeAnItem = useCallback(
     async (items: ProductProps[]): Promise<PromiseResult> => {
       const res = await mutation.mutateAsync({
         items,
-        action: "remoiveAnItem",
+        action: " removeAnItem",
+      });
+      return res;
+    },
+    [mutation]
+  );
+  const updateAnItem = useCallback(
+    async (items: ProductProps[]): Promise<PromiseResult> => {
+      const res = await mutation.mutateAsync({
+        items,
+        action: "updateAnItem",
       });
       return res;
     },
@@ -111,6 +121,7 @@ const CartProvider = ({ children }: PropsWithChildren) => {
     },
     [mutation]
   );
+
   const emptyCart = useCallback(
     async (items: ProductProps[]): Promise<PromiseResult> => {
       const res = await mutation.mutateAsync({ items, action: "emptyCart" });
@@ -120,7 +131,19 @@ const CartProvider = ({ children }: PropsWithChildren) => {
   );
 
   return (
-    <CART.context.Provider value={{ error, isPending, cart: data ?? [] }}>
+    <CART.context.Provider
+      value={{
+        error,
+        isPending,
+        cart: data ?? [],
+        mutation, // mutation을 context에 추가
+        addToCart,
+        emptyCart,
+        placeOrder,
+        removeAnItem,
+        updateAnItem,
+      }}
+    >
       {children}
     </CART.context.Provider>
   );

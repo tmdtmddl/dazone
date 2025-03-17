@@ -5,16 +5,17 @@ import { useCallback } from "react";
 
 const ProductItem = (item: ProductProps) => {
   const { id, imgs, name, price, quan, desc } = item;
+
   const { addToCart } = CART.use();
+
   const onAdd = useCallback(async () => {
+    console.log("add item");
     await addToCart([item]);
     alert("장바구니에 담겼습니다.");
   }, [addToCart, item]);
+
   return (
-    <div
-      className="flex flex-col border rounded border-border"
-      onClick={() => pricfy(1234.22, true)}
-    >
+    <div className="flex flex-col border rounded border-border">
       <img
         src={imgs[0]}
         alt={name}

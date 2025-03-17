@@ -30,7 +30,7 @@ const CartItem = ({ item, basket, onSelect }: Props) => {
             className="aspect-square object-cover hover:scale-105 transition"
           />
         </div>
-        <div className="flex flex-col gap-y-1 flex-1  w-2">
+        <div className="flex flex-col gap-y-1 flex-1 border w-2">
           <p className="font-bold truncate">{name}</p>
           <p className="font-light line-clamp-4 leading-5">{desc}</p>
           <Quan
@@ -40,7 +40,7 @@ const CartItem = ({ item, basket, onSelect }: Props) => {
                 return;
               }
               const newItem: CartProps = { ...item, quan: newQuan };
-              updateAnItem([newItem]);
+              await updateAnItem(newItem);
               onSelect(newItem);
             }}
           />

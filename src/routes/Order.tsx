@@ -40,6 +40,7 @@ const Order = () => {
 
   return (
     <div>
+      {data?.length}
       {data?.map((item) => (
         <div key={item.orderId} className="border">
           <h1>{item.orderName}</h1>

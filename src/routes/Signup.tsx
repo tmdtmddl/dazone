@@ -43,7 +43,7 @@ const Signup = () => {
       return false;
     }
     if (verificationCode !== randomNumber) {
-      alert("인증번호가 다릅니다.");
+      alert("인증번호가 일치하지 않습니다.");
       verificationCodeRef.current?.focus();
       return false;
     }
@@ -90,7 +90,7 @@ const Signup = () => {
       if (!success && message) {
         return alert(message);
       }
-      alert("완료");
+      alert("회원가입을 축하합니다.");
       navi("/");
     }
   }, [

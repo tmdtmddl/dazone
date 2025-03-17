@@ -8,10 +8,10 @@ import {
   IoMoon,
   IoBasketOutline,
 } from "react-icons/io5";
-import logoImage from "../imgs/logo.png";
-import logoImage2 from "../imgs/logow.png";
 import { AUTH, CART } from "../contextApi";
 import { twMerge } from "tailwind-merge";
+import logoImage from "../imgs/logo.png";
+import logoImage2 from "../imgs/logow.png";
 
 const RootLayout = () => {
   const [isMenuActive, setIsMenuActive] = useState(false);
@@ -20,13 +20,17 @@ const RootLayout = () => {
   );
 
   const menuHandler = () => setIsMenuActive(false);
+
   const { user } = AUTH.use();
   const { cart } = CART.use();
-  const [scroll, setScroll] = useState(0);
+
   const navi = useNavigate();
+
+  const [scroll, setScroll] = useState(0);
 
   useEffect(() => {
     const getScroll = () => setScroll(window.scrollY);
+
     window.addEventListener("scroll", getScroll);
 
     return () => {

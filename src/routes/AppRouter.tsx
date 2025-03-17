@@ -1,6 +1,5 @@
 import { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import Loading from "../shared/Loading";
 import { AUTH } from "../contextApi/context";
 
@@ -20,19 +19,19 @@ export default function AppRouter() {
     <Suspense fallback={<Loading />}>
       <BrowserRouter>
         <Routes>
-          <Route path="*" Component={NotFound} />
           <Route path="/" Component={RootLayout}>
             <Route index Component={Home} />
-
+            <Route path="*" Component={NotFound} />
             <Route path="myAccount" Component={MyAccount} />
             <Route path="signup" Component={Signup} />
             <Route path="product">
               <Route index Component={Product} />
               <Route path=":pid" Component={ProductDetail} />
             </Route>
+
             {user && (
               <>
-                <Route path="order">
+                <Route path="orders">
                   <Route index Component={Order} />
                   <Route path=":oid" element={<>order item</>} />
                 </Route>
