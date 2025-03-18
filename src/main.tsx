@@ -8,7 +8,7 @@ import CartProvider from "./contextApi/provider/CartProvider";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <QueryClientProvider client={new QueryClient({})}>
+    <QueryClientProvider client={new QueryClient()}>
       <AuthProvider>
         <CartProvider>
           <AppRouter />

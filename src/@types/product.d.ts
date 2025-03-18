@@ -10,9 +10,10 @@ interface ProductProps {
 interface CartProps extends ProductProps {
   createdAt: string;
 }
+
 interface OrderProps {
   amount: OrderAmount;
-  method: OdeerMethod;
+  method: OrderMethod;
   orderId: string;
   orderName: string;
   items: ProductProps[];
@@ -20,7 +21,7 @@ interface OrderProps {
 }
 
 interface OrderAmount {
-  curreny: "KRW" | "";
+  currency: "KRW" | "";
   value: number;
 }
 

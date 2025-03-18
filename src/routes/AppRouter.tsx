@@ -22,6 +22,7 @@ export default function AppRouter() {
           <Route path="/" Component={RootLayout}>
             <Route index Component={Home} />
             <Route path="*" Component={NotFound} />
+
             <Route path="myAccount" Component={MyAccount} />
             <Route path="signup" Component={Signup} />
             <Route path="product">
@@ -32,7 +33,7 @@ export default function AppRouter() {
             {user && (
               <>
                 <Route path="orders">
-                  <Route index Component={Order} />
+                  <Route index element={<Order {...user} />} />
                   <Route path=":oid" element={<>order item</>} />
                 </Route>
                 <Route path="cart">
