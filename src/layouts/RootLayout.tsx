@@ -10,9 +10,9 @@ import {
 } from "react-icons/io5";
 import { AUTH, CART, PRODUCT } from "../contextApi";
 import { twMerge } from "tailwind-merge";
+import { TextInput, TextInputRef } from "../ui";
 import Img1 from "../imgs/logo.png";
 import Img2 from "../imgs/logow.png";
-import { TextInput, TextInputRef } from "../ui";
 
 const RootLayout = () => {
   const [isMenuActive, setIsMenuActive] = useState(false);
@@ -23,6 +23,7 @@ const RootLayout = () => {
   const menuHandler = () => setIsMenuActive(false);
 
   const { user } = AUTH.use();
+
   const { cart } = CART.use();
 
   const navi = useNavigate();
@@ -38,15 +39,24 @@ const RootLayout = () => {
       window.removeEventListener("scroll", getScroll);
     };
   }, []);
+
   const [keyword, setKeyword] = useState("");
   const keywordRef = useRef<TextInputRef>(null);
 
   const { onChangeKeyword, products } = PRODUCT.store();
   const onSubmitKeyword = useCallback(() => {
     if (keyword.length === 0) {
-      return alert("입력되지 않았습니다.");
+      alert("검색어를 입력해주세요.");
+      return keywordRef.current?.focus();
     }
-  }, [keyword]);
+    const foundItem = products.find((item) => item.name.includes(keyword));
+    if (!foundItem) {
+      return alert("상품이 존재하지 않습니다.");
+    }
+    onChangeKeyword(keyword);
+    navi(`/product?productId=${foundItem.id}`);
+    setKeyword("");
+  }, [keyword, onChangeKeyword, products, navi]);
 
   return (
     <>
@@ -61,18 +71,25 @@ const RootLayout = () => {
             <img
               src={isDarkMode ? Img2 : Img1}
               alt="logo"
-              className="h-10 w-25 "
+              className="h-10 w-25"
             />
           </Link>
           <form
             className="flex flex-1 gap-x-2.5"
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={(e) => {
+              e.preventDefault();
+              onSubmitKeyword();
+            }}
           >
-            <TextInput
-              type="text"
-              className="flex-1 outline-none bg-bg px-2.5 dark:bg-darkBorder rounded"
-              placeholder="검색어를 입력해주세요."
-            />
+            <div className="flex-1">
+              <TextInput
+                placeholder="검색어를 입력해주세요."
+                id="keyword"
+                onChangeText={setKeyword}
+                ref={keywordRef}
+                value={keyword}
+              />
+            </div>
             <button className="bg-theme text-bg text-2xl w-10 dark:text-darkBg">
               <IoSearchOutline />
             </button>

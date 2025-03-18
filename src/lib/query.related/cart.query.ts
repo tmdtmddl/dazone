@@ -11,6 +11,7 @@ export default function useCartQuery(uid: string) {
     .collection(FBCollection.CART);
   const fetchFn = async (): Promise<CartProps[]> => {
     const snap = await ref.get();
+    console.log(snap);
 
     const data = snap.docs.map((doc) => ({ ...(doc.data() as CartProps) }));
 
@@ -61,7 +62,10 @@ export default function useCartQuery(uid: string) {
     },
   });
 
-  const updateFn = async (action: CRUDAction, cart: CartProps) => {
+  const updateFn = async (
+    action: CRUDAction,
+    cart: CartProps | ProductProps
+  ) => {
     await mutation.mutateAsync({ action, cart });
   };
 

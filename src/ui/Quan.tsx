@@ -26,7 +26,9 @@ const Quan = ({ onChange, quan, isPending }: Props) => {
         type="button"
         onClick={() => onChange(initialQuan)}
       >
-        {isPending && <Loading />}
+        {isPending && (
+          <Loading noMessage className="absolute h-full bg-white" />
+        )}
         {quan}
       </button>
       <button

@@ -7,9 +7,9 @@ export interface Props {
   onChangeKeyword: PropsFunc<string>;
 }
 
-export const store = create<Props>(() => ({
+export const store = create<Props>((set) => ({
   products,
   keyword: null,
   onChangeKeyword: (newKeyword) =>
-    set((perv) => ({ ...prev, keyword: newKeyword })),
+    set((prev) => ({ ...prev, keyword: newKeyword })),
 }));

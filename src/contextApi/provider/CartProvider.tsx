@@ -145,28 +145,42 @@
 
 // export default CartProvider;
 
-import useCartQuery from "../../lib/query.related/cart.query";
 import { PropsWithChildren, useCallback } from "react";
 import { AUTH, CART } from "../context";
+import useCartQuery from "../../lib/query.related/cart.query";
 import { useQuery } from "@tanstack/react-query";
 
 const CartProvider = ({ children }: PropsWithChildren) => {
   const { user } = AUTH.use();
 
-  const { fetchFn, queryKey, updateFn } = useCartQuery(user?.uid as string);
-
-  const { data, isPending, error } = useQuery({ queryKey, queryFn: fetchFn });
+  const { updateFn, queryKey, fetchFn } = useCartQuery(user?.uid as string);
+  const { data, isPending, error } = useQuery({ queryFn: fetchFn, queryKey });
 
   const addToCart = useCallback(
     async (item: ProductProps): Promise<PromiseResult> => {
       try {
         const foundItem = data?.find((cartItem) => cartItem.id === item.id);
+
         await updateFn(
           "CREATE",
           foundItem
             ? { ...foundItem, quan: foundItem.quan + 1 }
-            : { ...item, quan: 1, isOnBasket: true }
+            : { ...item, quan: 1 }
         );
+
+        return { success: true };
+      } catch (error: any) {
+        return { message: error.message };
+      }
+    },
+    [updateFn, data]
+  );
+
+  const updateAnItem = useCallback(
+    async (item: ProductProps): Promise<PromiseResult> => {
+      try {
+        await updateFn("UPDATE", item);
+
         return { success: true };
       } catch (error: any) {
         return { message: error.message };
@@ -176,9 +190,10 @@ const CartProvider = ({ children }: PropsWithChildren) => {
   );
 
   const removeAnItem = useCallback(
-    async (item: ProductProps): Promise<PromiseResult> => {
+    async (item: CartProps): Promise<PromiseResult> => {
       try {
         await updateFn("DELETE", item);
+
         return { success: true };
       } catch (error: any) {
         return { message: error.message };
@@ -187,38 +202,25 @@ const CartProvider = ({ children }: PropsWithChildren) => {
     [updateFn]
   );
 
-  const emptyCart = useCallback(
-    async (item: ProductProps): Promise<PromiseResult> => {
-      try {
-        data?.map(async (item) => await updateFn("DELETE", item));
-        return { success: true };
-      } catch (error: any) {
-        return { message: error.message };
-      }
-    },
-    [updateFn]
-  );
+  const emptyCart = useCallback(async (): Promise<PromiseResult> => {
+    try {
+      data?.map(async (item) => {
+        await updateFn("DELETE", item);
+      });
 
-  const updateAnItem = useCallback(
-    async (item: ProductProps): Promise<PromiseResult> => {
-      try {
-        await updateFn("UPDATE", item);
-        return { success: true };
-      } catch (error: any) {
-        return { message: error.message };
-      }
-    },
-    [updateFn]
-  );
-
+      return { success: true };
+    } catch (error: any) {
+      return { message: error.message };
+    }
+  }, [updateFn, data]);
   return (
     <CART.context.Provider
       value={{
-        cart: data ?? [],
-        isPending,
-        error,
         addToCart,
+        cart: data ?? [],
         emptyCart,
+        error,
+        isPending,
         removeAnItem,
         updateAnItem,
       }}

@@ -1,26 +1,22 @@
-import { AUTH } from "../contextApi/context";
-import AuthPage from "./Auth.page";
 import { MY } from "../contextApi";
-import MyMain from "./MyMain";
-import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import MyTab from "./MyTab";
+import AuthPage from "./Auth.page";
 import MyBasicInfo from "./MyBasicInfo";
 import MyPassword from "./MyPassword";
+import MyTab from "./MyTab";
 
 const MyAccount = (user: User) => {
   const { target } = MY.store();
-  const content = useSearchParams()[0].get("content");
-
-  // const [target, setTarget] = useState("");
   return !user ? (
     <AuthPage />
   ) : (
-    <div className="flex " style={{ height: "calc(100vh - 61px" }}>
-      {content}
+    <div
+      className="flex max-w-300 mx-auto px-2.5"
+      style={{
+        height: "calc(100vh - 61px)",
+      }}
+    >
       <MyTab />
-
-      <main>
+      <main className="m-5 flex-1">
         {
           {
             기본정보: <MyBasicInfo {...user} />,

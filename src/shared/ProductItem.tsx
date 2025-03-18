@@ -5,17 +5,18 @@ import { CART } from "../contextApi";
 
 const ProductItem = (item: ProductProps) => {
   const { id, imgs, name, price, quan, desc } = item;
+
   const { addToCart } = CART.use();
   const navi = useNavigate();
   const onAdd = useCallback(async () => {
-    const { message, success } = await addToCart([item]);
+    const { success, message } = await addToCart(item);
     if (!success) {
       return alert(message);
     }
-    if (confirm("결제?")) {
+
+    if (confirm("장바구니에 담았습니다. 바로 결제하시겠습니까?")) {
       navi("/cart");
     }
-    alert("장바구니에 담겼습니다.");
   }, [item, addToCart, navi]);
 
   return (

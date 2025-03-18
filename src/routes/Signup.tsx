@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { Form, TextInput, TextInputRef } from "../ui";
 import makeRandomNumber from "../utils/makeRandomNumber";
 import { AUTH } from "../contextApi/context";
@@ -33,15 +33,18 @@ const Signup = () => {
   const verify = useCallback((): boolean => {
     if (randomNumber.length === 0) {
       generateVerificationCode();
-      alert("인증번호가 재전송되었습니다.");
+
+      alert("인증번호가 재 전송되었습니다.");
       verificationCodeRef.current?.focus();
       return false;
     }
+
     if (verificationCode.length !== 6) {
-      alert("인증번호는6자리입니다. ");
+      alert("인증번호는 6자리 입니다.");
       verificationCodeRef.current?.focus();
       return false;
     }
+
     if (verificationCode !== randomNumber) {
       alert("인증번호가 일치하지 않습니다.");
       verificationCodeRef.current?.focus();
@@ -49,9 +52,10 @@ const Signup = () => {
     }
     alert("인증되었습니다.");
     return true;
-  }, [randomNumber, verificationCode, generateVerificationCode]);
+  }, [verificationCode, randomNumber, generateVerificationCode]);
 
   const { signup } = AUTH.use();
+
   const navi = useNavigate();
 
   const onSubmit = useCallback(async () => {
@@ -82,14 +86,15 @@ const Signup = () => {
       setIsVerifying(true);
       return verificationCodeRef.current?.focus();
     }
-    const verified = verify();
 
+    const verified = verify();
     if (verified) {
       const newUser: User = { email, name, uid: "", address: null };
       const { message, success } = await signup(newUser, password);
       if (!success && message) {
         return alert(message);
       }
+
       alert("회원가입을 축하합니다.");
       navi("/");
     }
@@ -100,13 +105,13 @@ const Signup = () => {
     password,
     confirmPassword,
     generateVerificationCode,
-    navi,
-    signup,
     verify,
+    signup,
+    navi,
   ]);
 
   return (
-    <div className=" max-w-100 p-5 mt-5 mx-auto border dark:border-darkBorder border-border rounded">
+    <div className="max-w-100 p-5 mt-5 mx-auto border dark:border-darkBorder border-border rounded">
       <Form onSubmit={onSubmit}>
         <h1 className="text-2xl font-bold">
           {!isVerifying ? "회원가입" : "인증하기"}

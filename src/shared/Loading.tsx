@@ -18,12 +18,9 @@ const Loading = ({ message, children, className, noMessage }: Props) => {
       {children ?? (
         <>
           <CgSpinner className="text-4xl animate-spin text-theme" />
-          {noMessage !==
-            true(
-              <h1 className="animate-pulse">
-                {message ?? "App is Loading..."}
-              </h1>
-            )}
+          {noMessage !== true && (
+            <h1 className="animate-pulse">{message ?? "App is Loading..."}</h1>
+          )}
         </>
       )}
     </div>
