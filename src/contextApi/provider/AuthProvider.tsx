@@ -129,7 +129,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     >
       {!initialized || isPending ? (
         <Loading>
-          <h1 className="text-[100px] font-black text-theme">대존</h1>
+          <h1 className="text-[100px] font-black text-theme">dazone</h1>
         </Loading>
       ) : (
         children

@@ -57,6 +57,7 @@
 import useOrderQuery from "../lib/query.related/orderquery";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../shared/Loading";
+import OrderItem from "./OrderItem";
 
 const Order = (user: User) => {
   const { fetchFn, queryKey } = useOrderQuery(user.uid);
@@ -77,9 +78,13 @@ const Order = (user: User) => {
 
   return (
     <div>
-      {data.map((order) => (
-        <div key={order.orderId}>{order.orderName}</div>
-      ))}
+      <ul className="flex flex-col gap-y-2.5">
+        {data.map((order) => (
+          <li key={order.orderId}>
+            <OrderItem {...order} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

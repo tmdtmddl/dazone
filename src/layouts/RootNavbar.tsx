@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 import { useMemo } from "react";
 import { AUTH } from "../contextApi/context";
+import { MY } from "../contextApi";
 
 interface Props {
   menuHandler: () => void;
@@ -14,6 +15,7 @@ interface Menu {
 
 const RootNavbar = ({ menuHandler }: Props) => {
   const { user, signout } = AUTH.use();
+  const { changeTarget } = MY.store();
   const menus: Menu[] = useMemo(() => {
     const items: Menu[] = [
       { to: "/", name: "홈" },
@@ -42,6 +44,10 @@ const RootNavbar = ({ menuHandler }: Props) => {
           menuHandler();
           if (name === "로그아웃") {
             signout();
+          }
+          if (name === "나의정보") {
+            console.log("다른창보여주기");
+            changeTarget("환경설정");
           }
         };
 

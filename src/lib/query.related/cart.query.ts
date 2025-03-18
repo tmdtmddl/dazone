@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { db, FBCollection } from "../firebase";
 import { getCreatedAt } from "../../utils/dayjs";
 
-export default function useOrderQuery(uid: string) {
+export default function useCartQuery(uid: string) {
   const queryKey = ["cart"];
 
   const ref = db
