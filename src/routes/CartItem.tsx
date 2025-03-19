@@ -5,7 +5,7 @@ import { CART } from "../contextApi";
 import Loading from "../shared/Loading";
 
 const CartItem = (item: CartProps) => {
-  const { name, desc, imgs, price, quan, isOnBasket } = item;
+  const { name, desc, imgs, price, quan, isOnBasket, createdAt } = item;
 
   const { updateAnItem, removeAnItem } = CART.use();
 
@@ -75,6 +75,7 @@ const CartItem = (item: CartProps) => {
               삭제
             </button>
           </div>
+          <p className="text-gray-400">담은날짜:{createdAt}</p>
         </div>
         <p>₩{pricfy(price)}</p>
       </div>

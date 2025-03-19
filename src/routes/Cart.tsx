@@ -98,7 +98,7 @@ const Cart = (user: User) => {
       {basket.length > 0 && (
         <>
           <div className="text-right text-xl my-5">
-            합계 ({basket.reduce((a, b) => a + b.quan, 0)}개의 상품):{" "}
+            합계 ({basket.reduce((a, b) => a + b.quan, 0)}개의 상품):
             <b> {pricfy(subTotal)}원</b>
           </div>
           <button onClick={onPay} className="btn">

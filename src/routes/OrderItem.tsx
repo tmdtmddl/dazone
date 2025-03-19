@@ -6,14 +6,16 @@ import { twMerge } from "tailwind-merge";
 
 const OrderItem = (order: OrderProps) => {
   const { amount, createdAt, items, orderId, orderName } = order;
+  console.log(items);
   const [isFull, setIsFull] = useState(false);
+
   return (
     <div className="border border-border dark:border-darkBorder p-2.5 rounded">
       <div className="flex gap-x-2.5">
         <div className="w-40 aspect-square">
           <img
-            src={items[0].imgs[0]}
-            alt={items[0].name}
+            src={items[0].imgs[0] || "/default-image.jpg"}
+            alt={items[0].name || "상품 이미지 없음"}
             className="object-cover h-full"
           />
         </div>

@@ -20,7 +20,7 @@ const ProductItem = (item: ProductProps) => {
   }, [item, addToCart, navi]);
 
   return (
-    <div className="flex flex-col border rounded border-border">
+    <div className="flex flex-col border rounded border-border hover:border-3 hover:border-theme">
       <img
         src={imgs[0]}
         alt={name}
