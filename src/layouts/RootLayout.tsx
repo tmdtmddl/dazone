@@ -8,7 +8,7 @@ import {
   IoMoon,
   IoBasketOutline,
 } from "react-icons/io5";
-import { AUTH, CART, PRODUCT } from "../contextApi";
+import { AUTH, CART } from "../contextApi";
 import { twMerge } from "tailwind-merge";
 import { TextInput, TextInputRef } from "../ui";
 import Img1 from "../imgs/logo.png";
@@ -23,7 +23,6 @@ const RootLayout = () => {
   const menuHandler = () => setIsMenuActive(false);
 
   const { user } = AUTH.use();
-
   const { cart } = CART.use();
 
   const navi = useNavigate();
@@ -43,20 +42,15 @@ const RootLayout = () => {
   const [keyword, setKeyword] = useState("");
   const keywordRef = useRef<TextInputRef>(null);
 
-  const { onChangeKeyword, products } = PRODUCT.store();
   const onSubmitKeyword = useCallback(() => {
     if (keyword.length === 0) {
       alert("검색어를 입력해주세요.");
       return keywordRef.current?.focus();
     }
-    const foundItem = products.find((item) => item.name.includes(keyword));
-    if (!foundItem) {
-      return alert("상품이 존재하지 않습니다.");
-    }
-    onChangeKeyword(keyword);
-    navi(`/product?productId=${foundItem.id}`);
+
     setKeyword("");
-  }, [keyword, onChangeKeyword, products, navi]);
+    navi(`/product?keyword=${keyword}`);
+  }, [keyword, navi]);
 
   return (
     <>
@@ -71,7 +65,7 @@ const RootLayout = () => {
             <img
               src={isDarkMode ? Img2 : Img1}
               alt="logo"
-              className="h-10 w-25"
+              className="h-10 w-25 min-w-25"
             />
           </Link>
           <form
@@ -150,7 +144,9 @@ const RootLayout = () => {
           Top
         </button>
       )}
-      <Outlet />
+      <main className="max-w-300 mx-auto">
+        <Outlet />
+      </main>
     </>
   );
 };

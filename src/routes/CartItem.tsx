@@ -41,7 +41,7 @@ const CartItem = (item: CartProps) => {
         <div className="flex flex-col gap-y-1 flex-1 w-2">
           <p className="font-bold truncate">{name}</p>
           <p className="font-light line-clamp-4 leading-5">{desc}</p>
-          <div className="flex items-center ">
+          <div className="flex gap-x-2.5">
             <Quan
               quan={quan}
               onChange={(newQuan) => {
@@ -60,6 +60,20 @@ const CartItem = (item: CartProps) => {
               }}
               isPending={isQPending}
             />
+            <button
+              className="h-8 text-warning hover:shadow-none hover:bg-white dark:hover:bg-darkBg"
+              onClick={() =>
+                startCb(async () => {
+                  const { success, message } = await removeAnItem(item);
+                  if (!success) {
+                    return alert(message);
+                  }
+                  alert("장바구니에서 삭제되었습니다.");
+                })
+              }
+            >
+              삭제
+            </button>
           </div>
         </div>
         <p>₩{pricfy(price)}</p>

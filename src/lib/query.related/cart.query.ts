@@ -10,8 +10,7 @@ export default function useCartQuery(uid: string) {
     .doc(uid)
     .collection(FBCollection.CART);
   const fetchFn = async (): Promise<CartProps[]> => {
-    const snap = await ref.get();
-    console.log(snap);
+    const snap = await ref.orderBy("createdAt", "desc").get();
 
     const data = snap.docs.map((doc) => ({ ...(doc.data() as CartProps) }));
 
@@ -34,9 +33,11 @@ export default function useCartQuery(uid: string) {
     }) => {
       switch (action) {
         case "CREATE":
-          await ref
-            .doc(cart.id)
-            .set({ ...cart, createdAt: getCreatedAt() } as CartProps);
+          await ref.doc(cart.id).set({
+            ...cart,
+            createdAt: getCreatedAt(),
+            isOnBasket: true,
+          } as CartProps);
 
           return;
 
@@ -58,6 +59,7 @@ export default function useCartQuery(uid: string) {
     },
 
     onSuccess: () => {
+      console.log("query fn succeed");
       cachingFn();
     },
   });

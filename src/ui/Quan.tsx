@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 import { twMerge } from "tailwind-merge";
 import Loading from "../shared/Loading";
@@ -26,9 +26,7 @@ const Quan = ({ onChange, quan, isPending }: Props) => {
         type="button"
         onClick={() => onChange(initialQuan)}
       >
-        {isPending && (
-          <Loading noMessage className="absolute h-full bg-white" />
-        )}
+        {isPending && <Loading noMessage className="absolute h-full " />}
         {quan}
       </button>
       <button
