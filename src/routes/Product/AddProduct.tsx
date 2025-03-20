@@ -1,11 +1,11 @@
 import { useState, useRef, useCallback, useTransition } from "react";
-import { Form, TextInput, TextInputRef } from "../ui";
-import FileItem from "./FileItem";
-import Loading from "../shared/Loading";
-import { storage } from "../lib/firebase";
+import { Form, TextInput, TextInputRef } from "../../ui";
+import FileItem from "../FileItem";
+import Loading from "../../shared/Loading";
+import { storage } from "../../lib/firebase";
 import { v4 } from "uuid";
 import { uploadBytes, getDownloadURL } from "firebase/storage";
-import useProductQuery from "../lib/query.related/prouct.query";
+import useProductQuery from "../../lib/query.related/prouct.query";
 
 const initialState: ProductProps = {
   name: "상품1",

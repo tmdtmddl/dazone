@@ -3,14 +3,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Loading from "../shared/Loading";
 import { AUTH } from "../contextApi/context";
 
-const Home = lazy(() => import("./Home"));
-const Product = lazy(() => import("./Product"));
-const MyAccount = lazy(() => import("./MyAccount"));
-const Cart = lazy(() => import("./Cart"));
+const Home = lazy(() => import("./Home/Home"));
+const Product = lazy(() => import("./Product/Product"));
+const MyAccount = lazy(() => import("./MyAccount/MyAccount"));
+const Cart = lazy(() => import("./Cart/Cart"));
 const RootLayout = lazy(() => import("../layouts/RootLayout"));
-const ProductDetail = lazy(() => import("./ProdctDetail"));
+const ProductDetail = lazy(() => import("./Product/ProdctDetail"));
 const Signup = lazy(() => import("./Signup"));
-const Order = lazy(() => import("./Order"));
+const Order = lazy(() => import("./Order/Order"));
 const NotFound = lazy(() => import("./NotFound"));
 // const Test = lazy(() => import("./Test"));
 

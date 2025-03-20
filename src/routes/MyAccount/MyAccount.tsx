@@ -1,10 +1,10 @@
-import { MY } from "../contextApi";
+import { MY } from "../../contextApi";
 import AddProduct from "./AddProduct";
-import AuthPage from "./Auth.page";
-import MyBasicInfo from "./MyBasicInfo";
-import MyPassword from "./MyPassword";
-import MyProducts from "./MyProducts";
-import MyTab from "./MyTab";
+import AuthPage from "../Auth.page";
+import MyBasicInfo from "../MyBasicInfo";
+import MyPassword from "../MyPassword";
+import MyProducts from "../MyProducts";
+import MyTab from "../MyTab";
 
 const MyAccount = ({ user }: { user: User | null }) => {
   const { target } = MY.store();

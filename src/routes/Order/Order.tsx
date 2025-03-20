@@ -55,8 +55,8 @@
 // export default Order;
 
 import { useQuery } from "@tanstack/react-query";
-import useOrderQuery from "../lib/query.related/orderquery";
-import Loading from "../shared/Loading";
+import useOrderQuery from "../../lib/query.related/orderquery";
+import Loading from "../../shared/Loading";
 import OrderItem from "./OrderItem";
 
 const Order = (user: User) => {

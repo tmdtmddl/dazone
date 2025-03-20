@@ -1,8 +1,8 @@
 import { useTransition } from "react";
-import pricfy from "../utils/pricfy";
-import { CheckBox, Quan } from "../ui";
-import { CART } from "../contextApi";
-import Loading from "../shared/Loading";
+import pricfy from "../../utils/pricfy";
+import { CheckBox, Quan } from "../../ui";
+import { CART } from "../../contextApi";
+import Loading from "../../shared/Loading";
 
 const CartItem = (item: CartProps) => {
   const { name, desc, imgs, price, quan, isOnBasket, createdAt } = item;
