@@ -12,6 +12,7 @@ const ProductDetail = lazy(() => import("./ProdctDetail"));
 const Signup = lazy(() => import("./Signup"));
 const Order = lazy(() => import("./Order"));
 const NotFound = lazy(() => import("./NotFound"));
+// const Test = lazy(() => import("./Test"));
 
 export default function AppRouter() {
   const { user } = AUTH.use();
@@ -19,6 +20,7 @@ export default function AppRouter() {
     <Suspense fallback={<Loading />}>
       <BrowserRouter>
         <Routes>
+          {/* <Route path="test" Component={Test} /> */}
           <Route path="/" Component={RootLayout}>
             <Route index Component={Home} />
             <Route path="*" Component={NotFound} />
