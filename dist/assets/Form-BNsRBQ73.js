@@ -1,0 +1,1 @@
+import{j as m,t as a}from"./index-Dp55R4ab.js";const f=t=>m.jsx("form",{...t,onSubmit:e=>{e.preventDefault(),t.onSubmit&&t.onSubmit(e)},className:a("flex flex-col gap-2.5",t==null?void 0:t.className)});export{f as F};

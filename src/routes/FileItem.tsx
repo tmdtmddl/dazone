@@ -1,4 +1,4 @@
-import React, { Ref } from "react";
+import { Ref } from "react";
 import { AiOutlineDelete, AiOutlinePlus } from "react-icons/ai";
 
 interface Props {

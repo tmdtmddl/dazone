@@ -1,4 +1,4 @@
-import { useRef, Ref, useImperativeHandle, useMemo, useEffect } from "react";
+import { useRef, Ref, useImperativeHandle, useMemo } from "react";
 import { twMerge } from "tailwind-merge";
 
 export interface TextInputProps {

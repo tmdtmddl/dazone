@@ -1,6 +1,6 @@
-import { useCallback, Ref, useRef } from "react";
+import { useCallback, useRef } from "react";
 
-import { TextInput } from ".";
+// import { TextInput } from ".";
 
 interface MyInputProps {
   focus: () => void;
