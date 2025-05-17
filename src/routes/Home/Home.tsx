@@ -3,8 +3,8 @@ import useProductQuery from "../../lib/query.related/prouct.query";
 import ProductItem from "../../shared/ProductItem";
 import Loading from "../../shared/Loading";
 // import { useEffect } from "react";
-// import { db, FBCollection } from "../lib/firebase";
-// import { products } from "../lib/dummy";
+// import { db, FBCollection } from "../../lib/firebase";
+// import { products } from "../../lib/dummy";
 
 const Home = () => {
   const { queryFn, queryKey } = useProductQuery();

@@ -4,7 +4,7 @@ import { db, FBCollection } from "../../lib/firebase";
 import Loading from "../../shared/Loading";
 import ProductItem from "../../shared/ProductItem";
 
-const prodctDetail = () => {
+const ProdctDetail = () => {
   const { pid } = useParams<{ pid: string }>();
 
   const { data, error, isPending } = useQuery({
@@ -32,4 +32,4 @@ const prodctDetail = () => {
   return <ProductItem {...data} />;
 };
 
-export default prodctDetail;
+export default ProdctDetail;
