@@ -1,0 +1,1 @@
+import{j as e,p as s}from"./index-Dp55R4ab.js";const n=()=>e.jsxs("div",{className:"w-full h-screen flex flex-col justify-center items-center fixed top-0 left-0 gap-y-2.5",children:[e.jsx("h1",{children:"Page Not Found"}),e.jsx(s,{to:"/",className:"btn",children:"홈으로 돌아가기"})]});export{n as default};
